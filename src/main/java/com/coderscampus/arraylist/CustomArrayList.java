@@ -18,12 +18,6 @@ public class CustomArrayList<T> implements CustomList<T> {
         return size;
     }
 
-    private void resizeArray() {
-        Object[] tempArray = new Object[items.length * 2];
-        System.arraycopy(items, 0, tempArray, 0, items.length);
-        items = tempArray;
-    }
-
 
     @Override
     @SuppressWarnings("unchecked")
@@ -34,4 +28,11 @@ public class CustomArrayList<T> implements CustomList<T> {
         throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size + " - out of bounds");
     }
 
+    private void resizeArray() {
+        Object[] tempArray = new Object[items.length * 2];
+        for (int i = 0; i < items.length; i++) {
+            tempArray[i] = items[i];
+        }
+        items = tempArray;
+    }
 }
